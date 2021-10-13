@@ -1,0 +1,2 @@
+# dimlight
+Dimlight is a Survival Puzzle Adventure game where the player must navigate through a dark maze while avoiding waves of incoming enemies. The player’s main tool of choice is the lantern as it can keep ghosts and other creatures away all while keeping the path visible. Be careful though, the lantern’s oil is a limited resource and when it runs out you lose, and you must restart the level.
