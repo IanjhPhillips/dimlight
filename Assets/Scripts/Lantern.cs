@@ -47,14 +47,14 @@ public class Lantern : MonoBehaviour
     //Mutators on radius, currentFuel and maxFuel
     public float getRadius()
     {
-        return currentFuel;
-        localScaleOn = new Vector3(radius, radius, 1f);
+        return radius;
     }
 
     public void setRadius(float _radius)
     {
         radius = _radius;
     }
+    
     public float getCurrentFuel ()
     {
         return currentFuel;
