@@ -34,7 +34,6 @@ public class HealthBar : MonoBehaviour
         for (int i = 0; i < totalHealth; i++) 
         {
             GameObject newHealth = Instantiate(healthContainerPrefab, transform);
-            Debug.Log(newHealth);
             healthContainers.Add(newHealth);
             if (currentContainer != null) 
             {
@@ -68,7 +67,6 @@ public class HealthBar : MonoBehaviour
         {
             currentHealth = 0f;
         }
-        Debug.Log(currentContainer);
         currentContainer.SetHealth(currentHealth);
     }
 
