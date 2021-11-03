@@ -40,6 +40,7 @@ public class Lantern : MonoBehaviour
         if (currentFuel <= 0)
         {
             currentFuel = 0;
+            SetActive(false);
             player.Die("Out of fuel");
         }
     }
