@@ -35,6 +35,7 @@ public class Lantern : MonoBehaviour
         if (active)
         {
             currentFuel -= fuelConsumptionRate;
+            FuelBar.instance.SetFuel(currentFuel);
         }
             
         if (currentFuel <= 0)
@@ -100,5 +101,5 @@ public class Lantern : MonoBehaviour
         this.maxFuel = _maxFuel;
     }
 
-
 }
+
