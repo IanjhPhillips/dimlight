@@ -26,20 +26,23 @@ public class PlayerMovement : MonoBehaviour
     // Update will handle data inputs
     void Update()
     {
-        //get movement input vector
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        movement = movement.normalized;
+        if (!PauseMenu.GameIsPaused)
+        {
+            //get movement input vector
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            movement = movement.normalized;
 
-        //handle lantern input
-        spacebarStatus = Input.GetKey("space");
-        UpdateLantern();
+            //handle lantern input
+            spacebarStatus = Input.GetKey("space");
+            UpdateLantern();
 
-        //set animator params
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.magnitude);
-        //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
+            //set animator params
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.magnitude);
+            //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
+        }
     }
 
     //Fixed Update is called based on a fixed timer (50 times a second default)
