@@ -27,22 +27,13 @@ public class Key : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
-            AddKeyToPlayer(player);
-        }
-    }
-
     public void SetKey(KeyColor _keyColor)
     {
         keyColor = _keyColor;
         keySpriteRenderer.sprite = keySprites[(int)keyColor];
     }
 
-    private void AddKeyToPlayer(PlayerMovement player)
+    public void AddKeyToPlayer(PlayerMovement player)
     {
         player.keys.Add(keyColor);
         keySpriteRenderer.enabled = false;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class KeyAndDoorSpawner : MonoBehaviour
 {
-    public GameObject doorPrefab;
-    public GameObject keyPrefab;
+    public GameObject[] doorPrefabs;
+    public GameObject[] keyPrefabs;
 
     //recall enum KeyColor {orange, blue, green, red}
     public GameObject[] orangeThresholds, blueThresholds, greenThresholds, redThresholds;
@@ -14,21 +14,52 @@ public class KeyAndDoorSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SpawnOneThreshold(orangeThresholds);
+        SpawnOneThreshold(redThresholds);
+        SpawnOneThreshold(blueThresholds);
+        SpawnOneThreshold(greenThresholds);
 
-        GameObject exampleDoorObject = Instantiate(doorPrefab, new Vector3(-5.5f, 1.5f, -1.0f), Quaternion.identity);
-        Door exampleDoor = exampleDoorObject.GetComponent<Door>();
-        exampleDoor.doorColor = (Key.KeyColor) Random.Range(0, Key.COLOR_COUNT);
-        Debug.Log("Generating a " + exampleDoor.doorColor.ToString() + " door.");
+        SpawnOneKey(orangeKeySpawns, keyPrefabs[0]);
+        SpawnOneKey(blueKeySpawns, keyPrefabs[1]);
+        SpawnOneKey(greenKeySpawns, keyPrefabs[2]);
+        SpawnOneKey(redKeySpawns, keyPrefabs[3]);
 
-        GameObject exampleKeyObject = Instantiate(keyPrefab, new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
-        Key exampleKey = exampleKeyObject.GetComponent<Key>();
-        exampleKey.keyColor = exampleDoor.doorColor;
-        Debug.Log("Generating a " + exampleKey.keyColor.ToString() + " key.");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void SpawnOneThreshold (GameObject[] thresholds)
+    {
+        if (thresholds.Length < 1)
+        {
+            return;
+        }
+
+        GameObject threshold = thresholds[Random.Range(0, thresholds.Length)];
+
+        foreach (GameObject t in thresholds)
+        {
+            if (!t.Equals(threshold))
+            {
+                Destroy(t);
+            }
+                
+        }
+    }
+
+    private void SpawnOneKey (GameObject[] spawns, GameObject key)
+    {
+        if (spawns.Length < 1)
+        {
+            return;
+        }
+
+        GameObject spawn = spawns[Random.Range(0, spawns.Length)];
+
+        Instantiate(key, spawn.transform.position, Quaternion.identity);
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Vertical_threshold
   - Horizontal_threshold
+  - Key
   layers:
   - Default
   - TransparentFX

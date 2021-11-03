@@ -53,4 +53,9 @@ public class Door : MonoBehaviour
         doorColor = _doorColor;
         doorSpriteRenderer.sprite = doorClosedSprites[(int)doorColor];
     }
+
+    public void Vertical ()
+    {
+        transform.Rotate(Vector3.forward, 90f);
+    }
 }

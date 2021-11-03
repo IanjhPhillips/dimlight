@@ -93,5 +93,11 @@ public class PlayerMovement : MonoBehaviour
             Damage(0.25f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
+
+        if (collision.CompareTag("Key"))
+        {
+            Key key = collision.gameObject.GetComponent<Key>();
+            key.AddKeyToPlayer(this);
+        }
     }
 }
