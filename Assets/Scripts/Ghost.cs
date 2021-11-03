@@ -46,7 +46,6 @@ public class Ghost : MonoBehaviour
         if (!PauseMenu.GameIsPaused)
         {
             speed = setSpeed;
-            Debug.Log(Time.timeScale);
             if (Time.time >= respawnTime && active)
             {
                 Respawn();
