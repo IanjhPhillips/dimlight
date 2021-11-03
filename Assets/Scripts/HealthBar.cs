@@ -25,10 +25,14 @@ public class HealthBar : MonoBehaviour
     float currentHealth;
     HealthContainer currentContainer;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
         healthContainers = new List<GameObject>();
     }
 
