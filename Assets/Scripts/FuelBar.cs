@@ -23,9 +23,13 @@ public class FuelBar : MonoBehaviour
     float currentFuel, maxFuel;
     float lerpSpeed;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         currentFuel = maxFuel = GameObject.FindGameObjectWithTag("Lantern").GetComponent<Lantern>().getMaxFuel();
     }
 
