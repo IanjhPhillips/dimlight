@@ -1,4 +1,16 @@
- using System.Collections;
+/***************************************************************************************
+*   Credits go to the authod this Youtube tutorial on how to build a Zelda-like health bar
+*   This code is inspired from the contents of the video with some modifications to fit
+*   our game's requirements.
+*   
+*   Title: How to Code and Create Zelda Hearts Health Bar in Unity
+*    Author: Info Gamer
+*    Date: January 12th 2021
+*    Availability: https://youtu.be/yeFTUBm0PbM
+*
+***************************************************************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

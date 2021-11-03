@@ -1,3 +1,15 @@
+/***************************************************************************************
+*   Credits go to the authod this Youtube tutorial on how to build a color changing health bar
+*   This code is inspired from the contents of the video with some modifications to fit
+*   our game's requirements.
+*   
+*    Title: Three Cool Health Bars in Unity (2021/2020)
+*    Author: Mousawi Dev
+*    Date: August 27th 2020
+*    Availability: https://youtu.be/ZzkIn41DFFo
+*
+***************************************************************************************/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
