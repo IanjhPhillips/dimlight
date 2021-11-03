@@ -53,7 +53,6 @@ public class Ghost : MonoBehaviour
 
     private void Spawn ()
     {
-        print("spawning: " +  gameObject);
         active = true;
         animator.SetBool("active", active);
         respawnTime = Time.time + Random.Range(lifeTimeMin, lifeTimeMax);
@@ -67,7 +66,6 @@ public class Ghost : MonoBehaviour
     {
         active = false;
         animator.SetBool("active", active);
-        print("fading: " + gameObject);
     }
 
     private void Move ()
