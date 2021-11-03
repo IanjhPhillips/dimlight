@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject lanternObj;
     private Lantern lantern;
 
+
     public float maxHealth = 10f;
     private float currentHealth;
     public List<string> keys = new List<string>();
@@ -30,23 +31,24 @@ public class PlayerMovement : MonoBehaviour
     // Update will handle data inputs
     void Update()
     {
-        //get movement input vector
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        movement = movement.normalized;
+        if (!PauseMenu.GameIsPaused)
+        {
+            //get movement input vector
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            movement = movement.normalized;
 
-        //handle lantern input
-        spacebarStatus = Input.GetKey("space");
-        UpdateLantern();
+            //handle lantern input
+            spacebarStatus = Input.GetKey("space");
+            UpdateLantern();
 
-        //set animator params
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.magnitude);
-        //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
-
-        HealthBar.instance.SetCurrentHealth(currentHealth);
-
+            //set animator params
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.magnitude);
+            //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
+            HealthBar.instance.SetCurrentHealth(currentHealth);
+        }
     }
 
     //Fixed Update is called based on a fixed timer (50 times a second default)
@@ -67,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         //restart level
     }
 
+
     public void Damage(float d)
     {
         currentHealth -= d;
@@ -80,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
     {
         return currentHealth;
     }
-
     public float getMaxHealth ()
     {
         return maxHealth;
