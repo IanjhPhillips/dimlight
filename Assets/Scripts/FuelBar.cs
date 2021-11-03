@@ -25,7 +25,7 @@ public class FuelBar : MonoBehaviour
             currentFuel = maxFuel;
         }
 
-        lerpSpeed = 3f * Time.deltaTime;
+        lerpSpeed = 9f* Time.deltaTime;
         ColorChanger();
     }
 

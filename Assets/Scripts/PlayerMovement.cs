@@ -13,10 +13,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject lanternObj;
     private Lantern lantern;
 
-    public int maxHealth = 10, currentHealth;
+    public float maxHealth = 10f;
+    private float currentHealth;
 
     private void Start()
     {
+        currentHealth = maxHealth;
+        HealthBar.instance.SetupHealth((int)currentHealth);
         if (lanternObj == null)
             lanternObj = GameObject.Find("Lantern");
         lantern = lanternObj.GetComponent<Lantern>();
@@ -40,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.magnitude);
         //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
+
+        HealthBar.instance.SetCurrentHealth(currentHealth);
+
     }
 
     //Fixed Update is called based on a fixed timer (50 times a second default)
@@ -60,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         //restart level
     }
 
-    public void Damage(int d)
+    public void Damage(float d)
     {
         currentHealth -= d;
         if (currentHealth <= 0)
@@ -69,12 +75,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public int getCurrentHealth ()
+    public float getCurrentHealth ()
     {
         return currentHealth;
     }
 
-    public int getMaxHealth ()
+    public float getMaxHealth ()
     {
         return maxHealth;
     }
@@ -83,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Ghost"))
         {
-            Damage(1);
+            Damage(0.25f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
     }
