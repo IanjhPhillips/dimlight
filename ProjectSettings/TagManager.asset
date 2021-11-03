@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lantern
+  - Ghost
   layers:
   - Default
   - TransparentFX
