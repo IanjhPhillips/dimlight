@@ -25,7 +25,6 @@ public class HealthBar : MonoBehaviour
     float currentHealth;
     HealthContainer currentContainer;
 
-
     private void Awake()
     {
         instance = this;

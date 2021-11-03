@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxHealth = 10f;
     private float currentHealth;
+    public List<string> keys = new List<string>();
 
     private void Start()
     {

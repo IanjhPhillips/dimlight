@@ -1090,6 +1090,7 @@ MonoBehaviour:
   animator: {fileID: 1187705684}
   lanternObj: {fileID: 0}
   maxHealth: 10
+  keys: []
 --- !u!212 &1187705682
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1201,6 +1202,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72108126, y: 0.7708883}
   m_EdgeRadius: 0
+--- !u!1 &1478175273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1478175274}
+  - component: {fileID: 1478175275}
+  m_Layer: 0
+  m_Name: KeyAndDoorSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1478175274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478175273}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1478175275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478175273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fde0ce60174f1b4088f5d79a3b8bdc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPrefab: {fileID: 4441113643596795584, guid: 3f88bf4be218c5549973d060b52cd98a, type: 3}
+  keyPrefab: {fileID: 7347022104951976225, guid: 95b941fd9880bba4bb5462489ad1a99d, type: 3}
 --- !u!1 &1552047328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552047328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.11, y: -1.72, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1187705683}
