@@ -12,14 +12,19 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject lanternObj;
     private Lantern lantern;
+    private bool hasTorch;
 
 
     public float maxHealth = 10f;
     private float currentHealth;
+    private bool isInvulnerable;
+
     public List<string> keys = new List<string>();
 
     private void Start()
     {
+        hasTorch = false;
+        isInvulnerable = false;
         currentHealth = maxHealth;
         HealthBar.instance.SetupHealth((int)currentHealth);
         if (lanternObj == null)
@@ -60,7 +65,15 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateLantern ()
     {
-        lantern.SetActive(spacebarStatus);
+        if (hasTorch)
+        {
+            lantern.SetActive(true);
+
+        }
+        else 
+        {
+            lantern.SetActive(spacebarStatus);
+        }
     }
 
     public void Die (string message)
@@ -72,10 +85,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damage(float d)
     {
-        currentHealth -= d;
+        if (!isInvulnerable) 
+        {
+            currentHealth -= d;
+        }
         if (currentHealth <= 0)
         {
             Die("Out of HP");
+        }
+    }
+
+    public void setCurrentHealth(float _health)
+    {
+        if (_health > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else 
+        {
+            currentHealth = _health;
         }
     }
 
@@ -95,5 +123,63 @@ public class PlayerMovement : MonoBehaviour
             Damage(0.25f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
+        if (collision.CompareTag("FuelBoost"))
+        {
+            lantern.setCurrentFuel(lantern.getCurrentFuel() + BoostValues.instance.GetFuelIncrease());
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("HealthBoost"))
+        {
+            setCurrentHealth(currentHealth + BoostValues.instance.GetHealthIncrease());
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("SpeedBoost"))
+        {
+            moveSpeed += BoostValues.instance.GetSpeedIncrease();
+            Destroy(collision.gameObject);
+            StartCoroutine(ResetSpeed());
+        }
+        if (collision.CompareTag("TorchBoost"))
+        {
+            hasTorch = true;
+            Destroy(collision.gameObject);
+            StartCoroutine(ResetTorch());
+        }
+        if (collision.CompareTag("InvulnerabilityBoost"))
+        {
+            isInvulnerable = true;
+            Destroy(collision.gameObject);
+            StartCoroutine(ResetInvulnerability());
+        }
+    }
+
+
+    private IEnumerator ResetSpeed() 
+    {
+        yield return new WaitForSeconds(BoostValues.instance.GetSpeedIncreaseDuration());
+        moveSpeed -= BoostValues.instance.GetSpeedIncrease();
+    }
+
+    public bool GetTorchStatus()
+    {
+        return hasTorch;
+    }
+
+    private IEnumerator ResetTorch()
+    {
+        yield return new WaitForSeconds(BoostValues.instance.GetTorchDuration());
+        hasTorch = false;    
+    }
+
+
+    public bool GetInvulnerabilityStatus()
+    {
+        return isInvulnerable;
+    }
+
+    private IEnumerator ResetInvulnerability()
+    {
+        yield return new WaitForSeconds(BoostValues.instance.GetInvulnerabilityDuration());
+        isInvulnerable = false;
     }
 }

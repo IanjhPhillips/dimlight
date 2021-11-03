@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Lantern : MonoBehaviour
 {
-
     PlayerMovement player;
 
     private bool active;
@@ -34,10 +33,13 @@ public class Lantern : MonoBehaviour
     {
         if (active)
         {
-            currentFuel -= fuelConsumptionRate;
+            if (!player.GetTorchStatus()) 
+            {
+                currentFuel -= fuelConsumptionRate;
+            }
             FuelBar.instance.SetFuel(currentFuel);
         }
-            
+
         if (currentFuel <= 0)
         {
             currentFuel = 0;
@@ -88,7 +90,14 @@ public class Lantern : MonoBehaviour
 
     public void setCurrentFuel (float _fuel)
     {
-        this.currentFuel = _fuel;
+        if (_fuel > maxFuel)
+        {
+            this.currentFuel = maxFuel;
+        }
+        else 
+        {
+            this.currentFuel = _fuel;
+        }
     }
 
     public float getMaxFuel()
