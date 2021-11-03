@@ -5,19 +5,22 @@ using UnityEngine;
 public class Lantern : MonoBehaviour
 {
 
+    PlayerMovement player;
+
     private bool active;
     public float maxFuel;
     private float currentFuel;
     public float fuelConsumptionRate;
-    private float radius;
+    private float diameter = 10f;
 
     private Vector3 localScaleOn, localScaleOff;
     // Start is called before the first frame update
     void Start()
     {
-        radius = 10f;
+        player = transform.parent.gameObject.GetComponent<PlayerMovement>();
+
         //save these as to avoid creating new vectors every frame
-        localScaleOn = new Vector3(radius, radius, 1f);
+        localScaleOn = new Vector3(diameter, diameter, 1f);
         localScaleOff = new Vector3(0f, 0f, 0f);
 
         //initialize state
@@ -30,7 +33,16 @@ public class Lantern : MonoBehaviour
     void Update()
     {
         if (active)
+        {
             currentFuel -= fuelConsumptionRate;
+        }
+            
+        if (currentFuel <= 0)
+        {
+            currentFuel = 0;
+            SetActive(false);
+            player.Die("Out of fuel");
+        }
     }
 
     //Set Lantern active state and scale (future: animation states)
@@ -38,41 +50,54 @@ public class Lantern : MonoBehaviour
     {
         if (active != input)
         {
-            print("setting lantern: " + active);
-            active = input;
-            transform.localScale = active ? localScaleOn : localScaleOff;
+            if (input && currentFuel > 0)
+            {
+                active = true;
+                transform.localScale = active ? localScaleOn : localScaleOff;
+            }
+            else
+            {
+                active = false;
+                transform.localScale = active ? localScaleOn : localScaleOff;
+            }
+                
         }
+    }
+
+    public bool isActive()
+    {
+        return active;
     }
 
     //Mutators on radius, currentFuel and maxFuel
     public float getRadius()
     {
-        return radius;
+        return this.diameter / 2f;
     }
 
     public void setRadius(float _radius)
     {
-        radius = _radius;
+        this.diameter = _radius;
     }
     
     public float getCurrentFuel ()
     {
-        return currentFuel;
+        return this.currentFuel;
     }
 
     public void setCurrentFuel (float _fuel)
     {
-        currentFuel = _fuel;
+        this.currentFuel = _fuel;
     }
 
     public float getMaxFuel()
     {
-        return maxFuel;
+        return this.maxFuel;
     }
 
     public void setMaxFuel(float _maxFuel)
     {
-        maxFuel = _maxFuel;
+        this.maxFuel = _maxFuel;
     }
 
 

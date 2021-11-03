@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject lanternObj;
     private Lantern lantern;
 
+    public int maxHealth = 10, currentHealth;
+
     private void Start()
     {
         if (lanternObj == null)
@@ -52,5 +54,37 @@ public class PlayerMovement : MonoBehaviour
         lantern.SetActive(spacebarStatus);
     }
 
+    public void Die (string message)
+    {
+        print(message);
+        //restart level
+    }
 
+    public void Damage(int d)
+    {
+        currentHealth -= d;
+        if (currentHealth <= 0)
+        {
+            Die("Out of HP");
+        }
+    }
+
+    public int getCurrentHealth ()
+    {
+        return currentHealth;
+    }
+
+    public int getMaxHealth ()
+    {
+        return maxHealth;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ghost"))
+        {
+            Damage(1);
+            collision.gameObject.GetComponent<Ghost>().Respawn();
+        }
+    }
 }
