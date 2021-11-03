@@ -7,12 +7,17 @@ public class KeyAndDoorSpawner : MonoBehaviour
     public GameObject doorPrefab;
     public GameObject keyPrefab;
 
+    //recall enum KeyColor {orange, blue, green, red}
+    public GameObject[] orangeThresholds, blueThresholds, greenThresholds, redThresholds;
+    public GameObject[] orangeKeySpawns, blueKeySpawns, greenKeySpawns, redKeySpawns;
+
     // Start is called before the first frame update
     void Start()
     {
+
         GameObject exampleDoorObject = Instantiate(doorPrefab, new Vector3(-5.5f, 1.5f, -1.0f), Quaternion.identity);
         Door exampleDoor = exampleDoorObject.GetComponent<Door>();
-        exampleDoor.doorColor = exampleDoor.colors[Random.Range(0, exampleDoor.colors.Length)];
+        exampleDoor.doorColor = (Key.KeyColor) Random.Range(0, Key.COLOR_COUNT);
         Debug.Log("Generating a " + exampleDoor.doorColor.ToString() + " door.");
 
         GameObject exampleKeyObject = Instantiate(keyPrefab, new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);

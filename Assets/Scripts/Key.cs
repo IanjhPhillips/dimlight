@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    public enum KeyColor { orange, blue, green, red };
+    public const int COLOR_COUNT = 4;
 
-    SpriteRenderer keySprite;
-    public Sprite[] keyColors;
-    public string[] colors = {"red", "orange", "green", "blue"};
-    public string keyColor;
+    SpriteRenderer keySpriteRenderer;
+    public Sprite[] keySprites;
+    public KeyColor keyColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        keySprite = gameObject.GetComponent<SpriteRenderer>();
+        keySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (keySprite.sprite == null && keyColor != null)
+        if (keySpriteRenderer.sprite == null)
         {
-            keySprite.sprite = keyColors[Array.IndexOf(colors, keyColor)];
+            keySpriteRenderer.sprite = keySprites[(int)keyColor];
         }
     }
 
@@ -31,10 +32,22 @@ public class Key : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
-            player.keys.Add(keyColor);
-            keySprite.enabled = false;
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            gameObject.SetActive(false);
+            AddKeyToPlayer(player);
         }
     }
+
+    public void SetKey(KeyColor _keyColor)
+    {
+        keyColor = _keyColor;
+        keySpriteRenderer.sprite = keySprites[(int)keyColor];
+    }
+
+    private void AddKeyToPlayer(PlayerMovement player)
+    {
+        player.keys.Add(keyColor);
+        keySpriteRenderer.enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.SetActive(false);
+    }
+
 }

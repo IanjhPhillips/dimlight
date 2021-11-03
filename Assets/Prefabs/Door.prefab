@@ -97,19 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a224989aa0a8c47b7f38850874b38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorColors:
-  - {fileID: -3617890496977239687, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
+  doorClosedSprites:
   - {fileID: 652578950146841737, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
-  - {fileID: 5254006693355244118, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
   - {fileID: 4501160850395375473, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
-  colors:
-  - orange
-  - blue
-  - green
-  - red
-  doorColor: 
-  doorOpen: {fileID: 56620439618514892, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
+  - {fileID: 5254006693355244118, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
+  - {fileID: -3617890496977239687, guid: 1a55059cdebcc5a4984a5fcb25a1c491, type: 3}
+  doorColor: 0
+  doorOpenSprite: {fileID: 0}
   isDoorOpen: 0
+  boxCollider: {fileID: 0}
 --- !u!50 &2857704742588179554
 Rigidbody2D:
   serializedVersion: 4

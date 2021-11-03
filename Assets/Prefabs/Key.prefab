@@ -96,17 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27801f6832bd6d4692f05773e3d03aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyColors:
-  - {fileID: 1095141833252711340, guid: f701b9c1f3a3c094aa5f9a386b2252fb, type: 3}
+  keySprites:
   - {fileID: -7756627232784180200, guid: f701b9c1f3a3c094aa5f9a386b2252fb, type: 3}
-  - {fileID: 6614747575886032176, guid: f701b9c1f3a3c094aa5f9a386b2252fb, type: 3}
   - {fileID: 5525693023308922211, guid: f701b9c1f3a3c094aa5f9a386b2252fb, type: 3}
-  colors:
-  - orange
-  - blue
-  - green
-  - red
-  keyColor: 
+  - {fileID: 6614747575886032176, guid: f701b9c1f3a3c094aa5f9a386b2252fb, type: 3}
+  - {fileID: 1095141833252711340, guid: f701b9c1f3a3c094aa5f9a386b2252fb, type: 3}
+  keyColor: 0
 --- !u!70 &7347022104951976226
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,25 +6,26 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
 
-    SpriteRenderer doorSprite;
-    public Sprite[] doorColors;
-    public string[] colors = {"red", "orange", "green", "blue"};
-    public string doorColor;
-    public Sprite doorOpen;
+    SpriteRenderer doorSpriteRenderer;
+    public Sprite[] doorClosedSprites;
+    public Key.KeyColor doorColor;
+    public Sprite doorOpenSprite;
     public bool isDoorOpen = false;
+    public BoxCollider2D boxCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        doorSprite = gameObject.GetComponent<SpriteRenderer>();
+        doorSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        boxCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (doorSprite.sprite == null && doorColor != null)
+        if (doorSpriteRenderer.sprite == null)
         {
-            doorSprite.sprite = doorColors[Array.IndexOf(colors, doorColor)];
+            SetDoor(doorColor, isDoorOpen);
         }
     }
 
@@ -36,9 +37,20 @@ public class Door : MonoBehaviour
             if (player.keys.Contains(doorColor))
             {
                 isDoorOpen = true;
-                doorSprite.sprite = doorOpen;
-                gameObject.GetComponent<Collider2D>().enabled = false;
+                SetDoor(doorColor, isDoorOpen);
             }
         }
+    }
+
+    public void SetDoor (Key.KeyColor _doorColor, bool isOpen)
+    {
+        if (isOpen)
+        {
+            doorSpriteRenderer.sprite = doorOpenSprite;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            return;
+        }
+        doorColor = _doorColor;
+        doorSpriteRenderer.sprite = doorClosedSprites[(int)doorColor];
     }
 }
