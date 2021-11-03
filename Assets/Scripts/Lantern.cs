@@ -29,8 +29,11 @@ public class Lantern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (active)
+        if (active) 
+        {
             currentFuel -= fuelConsumptionRate;
+            FuelBar.instance.SetFuel(currentFuel);
+        }
     }
 
     //Set Lantern active state and scale (future: animation states)
@@ -74,6 +77,4 @@ public class Lantern : MonoBehaviour
     {
         maxFuel = _maxFuel;
     }
-
-
 }
