@@ -10,6 +10,11 @@ TagManager:
   - Vertical_threshold
   - Horizontal_threshold
   - Key
+  - FuelBoost
+  - HealthBoost
+  - SpeedBoost
+  - TorchBoost
+  - InvulnerabilityBoost
   layers:
   - Default
   - TransparentFX

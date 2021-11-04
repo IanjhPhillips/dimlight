@@ -11,6 +11,7 @@ public class Ghost : MonoBehaviour
     private Animator animator;
 
     public float speed;
+    private float setSpeed;
     private bool active;
     private float respawnTime;
     public float lifeTimeMin = 10f, lifeTimeMax = 30f;
@@ -24,6 +25,8 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setSpeed = speed;
+
         spriteRend = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
 
@@ -40,20 +43,26 @@ public class Ghost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= respawnTime && active)
+        if (!PauseMenu.GameIsPaused)
         {
-            Respawn();
+            speed = setSpeed;
+            if (Time.time >= respawnTime && active)
+            {
+                Respawn();
+            }
+            if (active)
+            {
+                Move();
+            }
         }
-        if (active)
+        else 
         {
-            Move();
+            speed = 0f;
         }
-        
     }
 
     private void Spawn ()
     {
-        print("spawning: " +  gameObject);
         active = true;
         animator.SetBool("active", active);
         respawnTime = Time.time + Random.Range(lifeTimeMin, lifeTimeMax);
@@ -67,7 +76,6 @@ public class Ghost : MonoBehaviour
     {
         active = false;
         animator.SetBool("active", active);
-        print("fading: " + gameObject);
     }
 
     private void Move ()
