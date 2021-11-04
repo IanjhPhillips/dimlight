@@ -15,6 +15,7 @@ TagManager:
   - SpeedBoost
   - TorchBoost
   - InvulnerabilityBoost
+  - Stairs
   layers:
   - Default
   - TransparentFX

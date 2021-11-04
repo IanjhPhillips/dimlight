@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1725532612794724509}
   - component: {fileID: 1725532612794724505}
   - component: {fileID: 1725532612794724504}
+  - component: {fileID: 1425893272}
   m_Layer: 0
   m_Name: Boblin
   m_TagString: Player
@@ -104,7 +105,7 @@ MonoBehaviour:
   animator: {fileID: 1725532612794724505}
   lanternObj: {fileID: 0}
   maxHealth: 10
-  keys: []
+  keys: 
 --- !u!50 &1725532612794724509
 Rigidbody2D:
   serializedVersion: 4
@@ -158,7 +159,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.034864783}
+  m_Offset: {x: -0.04634893, y: -0.038430214}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -169,8 +170,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.72108126, y: 0.7708883}
+  m_Size: {x: 0.54281616, y: 0.549839}
   m_EdgeRadius: 0
+--- !u!114 &1425893272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725532612794724482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4881bfed516214ead67f5d950ee30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelIncrease: 10000
+  healthIncrease: 1
+  speedIncrease: 1
+  speedIncreaseDuration: 7
+  torchDuration: 7
+  invulnerabilityDuration: 7
 --- !u!1 &1725532613226241837
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,5 +284,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ac188ab7971b1498d4f0f956df1972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFuel: 50000
+  maxFuel: 7000
   fuelConsumptionRate: 1

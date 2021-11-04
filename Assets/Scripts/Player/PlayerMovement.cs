@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
         HealthBar.instance.SetupHealth((int)currentHealth);
         if (lanternObj == null)
-            lanternObj = GameObject.Find("Lantern");
+            lanternObj = GameObject.FindWithTag("Lantern");
         lantern = lanternObj.GetComponent<Lantern>();
     }
 
@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     public void Die (string message)
     {
         print(message);
+        GameManager.manager.Failure(message);
         //restart level
     }
 
@@ -120,6 +121,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Stairs"))
+        {
+            collision.gameObject.GetComponent<Stairs>().LoadNext();
+        }
+
         if (collision.CompareTag("Ghost"))
         {
             Damage(0.25f);
