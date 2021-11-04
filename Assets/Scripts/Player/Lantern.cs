@@ -35,7 +35,7 @@ public class Lantern : MonoBehaviour
         {
             if (!player.GetTorchStatus()) 
             {
-                currentFuel -= fuelConsumptionRate;
+                currentFuel -= fuelConsumptionRate * Time.deltaTime;
             }
             FuelBar.instance.SetFuel(currentFuel);
         }

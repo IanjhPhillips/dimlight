@@ -15,13 +15,14 @@ public class SceneInfo : MonoBehaviour
     private void Awake()
     {
         info = this;
-    }
-
-    public void Start()
-    {
         if (firstStage && !GameManager.manager.getFail())
         {
             GameManager.manager.StartTimer();
         }
+    }
+
+    public void Start()
+    {
+        
     }
 }

@@ -284,5 +284,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ac188ab7971b1498d4f0f956df1972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFuel: 7000
-  fuelConsumptionRate: 1
+  maxFuel: 2000
+  fuelConsumptionRate: 100

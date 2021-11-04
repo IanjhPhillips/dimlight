@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMenu.unity
     guid: 46c9dcfb580087b4ba2057e62f678347
   - enabled: 1
-    path: Assets/Scenes/Prototype.unity
-    guid: e9bbc32fde059f04889603a9c3726fe7
+    path: Assets/Scenes/Prototype1.unity
+    guid: b331a13b5d691fc498f2b4695826dbb3
+  - enabled: 1
+    path: Assets/Scenes/Prototype2.unity
+    guid: c554f09e01ad6d04cb774cdc667e76f9
   - enabled: 1
     path: Assets/Scenes/RecapMenu.unity
     guid: c5433bcc0e7ac5947b1b1946ac0a6f37
