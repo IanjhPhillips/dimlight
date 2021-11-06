@@ -17,9 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxHealth = 10f;
     private float currentHealth;
+
+    public List<Key.KeyColor> keys = new List<Key.KeyColor>();
+
     private bool isInvulnerable;
 
-    public List<string> keys = new List<string>();
 
     private void Start()
     {
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
         HealthBar.instance.SetupHealth((int)currentHealth);
         if (lanternObj == null)
-            lanternObj = GameObject.Find("Lantern");
+            lanternObj = GameObject.FindWithTag("Lantern");
         lantern = lanternObj.GetComponent<Lantern>();
     }
 
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     public void Die (string message)
     {
         print(message);
+        GameManager.manager.Failure(message);
         //restart level
     }
 
@@ -118,11 +121,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Stairs"))
+        {
+            collision.gameObject.GetComponent<Stairs>().LoadNext();
+        }
+
         if (collision.CompareTag("Ghost"))
         {
             Damage(0.25f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
+
+
+        if (collision.CompareTag("Key"))
+        {
+            Key key = collision.gameObject.GetComponent<Key>();
+            key.AddKeyToPlayer(this);
+        }
+
         if (collision.CompareTag("FuelBoost"))
         {
             lantern.setCurrentFuel(lantern.getCurrentFuel() + BoostValues.instance.GetFuelIncrease());

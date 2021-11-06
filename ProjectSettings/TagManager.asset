@@ -7,11 +7,15 @@ TagManager:
   - Lantern
   - Ghost
   - Door
+  - Vertical_threshold
+  - Horizontal_threshold
+  - Key
   - FuelBoost
   - HealthBoost
   - SpeedBoost
   - TorchBoost
   - InvulnerabilityBoost
+  - Stairs
   layers:
   - Default
   - TransparentFX
