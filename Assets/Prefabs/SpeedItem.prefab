@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8756031886572743237}
   - component: {fileID: 8756031886572743238}
   - component: {fileID: 8756031886572743239}
+  - component: {fileID: 6983362622269429623}
   m_Layer: 0
   m_Name: SpeedItem
   m_TagString: SpeedBoost
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8756031886572743240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.55, y: -0.58, z: 0}
-  m_LocalScale: {x: 0.8332, y: 0.8332, z: 0.8332}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,3 +100,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.006800667, y: 0.022842487}
   m_Size: {x: 0.64114356, y: 0.83832896}
   m_Direction: 0
+--- !u!95 &6983362622269429623
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756031886572743240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d10469e4d9c9474d8da48cd2c59923a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
