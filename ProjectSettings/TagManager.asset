@@ -16,16 +16,17 @@ TagManager:
   - TorchBoost
   - InvulnerabilityBoost
   - Stairs
+  - Candle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Candle
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ghost
+  - Walls
+  - Player
   - 
   - 
   - 

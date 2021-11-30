@@ -9,6 +9,7 @@ public class SceneInfo : MonoBehaviour
 
     public bool firstStage = false;
     public bool lastStage = false;
+    public int stageNumber = 1;
 
     public static SceneInfo info;
 

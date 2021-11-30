@@ -50,9 +50,8 @@ public class PlayerMovement : MonoBehaviour
             UpdateLantern();
 
             //set animator params
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", movement.magnitude);
+            setAnimatorParams(movement);
+
             //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
             HealthBar.instance.SetCurrentHealth(currentHealth);
         }
@@ -63,6 +62,27 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate() 
     {
         rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void setAnimatorParams(Vector2 movement)
+    {
+        animator.SetBool("Right", false);
+        animator.SetBool("Left", false);
+        animator.SetBool("Up", false);
+        animator.SetBool("Down", false);
+        animator.SetBool("Idle", false);
+
+        animator.SetBool("Lantern", spacebarStatus || hasTorch);
+        if (movement.x > 0)
+            animator.SetBool("Right", true);
+        else if (movement.x < 0)
+            animator.SetBool("Left", true);
+        else if (movement.y > 0)
+            animator.SetBool("Up", true);
+        else if (movement.y < 0)
+            animator.SetBool("Down", true);
+        else
+            animator.SetBool("Idle", true);
     }
 
     void UpdateLantern ()
@@ -94,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
-            Die("Out of HP");
+            Die("Out of Health");
         }
     }
 
