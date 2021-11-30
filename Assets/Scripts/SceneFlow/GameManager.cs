@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             fail = false;
             return failureMessage; 
         }
-        return "";
+        return "Stage " + SceneInfo.info.stageNumber;
     }
 
     public void StartTimer ()

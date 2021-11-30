@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
-            Die("Out of HP");
+            Die("Out of Health");
         }
     }
 

@@ -11188,6 +11188,10 @@ PrefabInstance:
       propertyPath: firstStage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6219063245565519195, guid: 358e2d2c79c70a842803aa9fef0075e9, type: 3}
+      propertyPath: stageNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6219063245565519196, guid: 358e2d2c79c70a842803aa9fef0075e9, type: 3}
       propertyPath: m_RootOrder
       value: 0
