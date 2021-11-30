@@ -25,9 +25,7 @@ public class ItemTwinkle : MonoBehaviour
 
     public void StartRecharge()
     {
-        print("here");
         StartCoroutine(Recharge());
-        
     }
 
     IEnumerator Recharge()

@@ -11061,6 +11061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: candle
       objectReference: {fileID: 0}
+    - target: {fileID: 2144137994655517670, guid: 3efc5cf0e54b4b1499af04ab7011bfa0, type: 3}
+      propertyPath: m_TagString
+      value: Candle
+      objectReference: {fileID: 0}
     - target: {fileID: 2144137994655517671, guid: 3efc5cf0e54b4b1499af04ab7011bfa0, type: 3}
       propertyPath: m_RootOrder
       value: 0
