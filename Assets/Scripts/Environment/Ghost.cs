@@ -115,6 +115,14 @@ public class Ghost : MonoBehaviour
         return target;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Candle"))
+        {
+            Respawn();
+        }
+    }
+
     // imagine a straight line between this and the lantern
     // find position on line that intersects with lantern radius
     private Vector2 GetLanternEdgeTarget ()

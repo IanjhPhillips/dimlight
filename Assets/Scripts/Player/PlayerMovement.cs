@@ -66,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
 
     void setAnimatorParams(Vector2 movement)
     {
-        print(movement);
         animator.SetBool("Right", false);
         animator.SetBool("Left", false);
         animator.SetBool("Up", false);
