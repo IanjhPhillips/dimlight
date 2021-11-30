@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemTwinkle : MonoBehaviour
 {
-    float maxWaitTime = 3f;
-    float minWaitTime = 1f;
+    float maxWaitTime = 4f;
+    float minWaitTime = 2f;
     float waitTime = 0f;
 
     Animator animator;
