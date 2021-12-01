@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         if (lanternObj == null)
             lanternObj = GameObject.FindWithTag("Lantern");
         lantern = lanternObj.GetComponent<Lantern>();
+        KeyInventory.keyInventory.SetInventoryIcons(keys);
     }
 
     // Update is called once per frame
@@ -217,5 +218,17 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(BoostValues.instance.GetInvulnerabilityDuration());
         isInvulnerable = false;
+    }
+
+    public void addKey(Key.KeyColor key)
+    {
+        keys.Add(key);
+        KeyInventory.keyInventory.SetInventoryIcons(keys);
+    }
+
+    public void removeKey(Key.KeyColor key)
+    {
+        keys.Remove(key);
+        KeyInventory.keyInventory.SetInventoryIcons(keys);
     }
 }

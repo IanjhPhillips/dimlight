@@ -35,7 +35,7 @@ public class Key : MonoBehaviour
 
     public void AddKeyToPlayer(PlayerMovement player)
     {
-        player.keys.Add(keyColor);
+        player.addKey(keyColor);
         keySpriteRenderer.enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.SetActive(false);
