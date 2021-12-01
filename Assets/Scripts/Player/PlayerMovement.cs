@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rigidBody;
     public Animator animator;
+    private SpriteRenderer spriteRend;
+    
     Vector2 movement;
     private bool spacebarStatus;
 
@@ -14,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Lantern lantern;
     private bool hasTorch;
 
+    public GameObject invulnerableParticles, torchParticles;
 
     public float maxHealth = 10f;
     private float currentHealth;
@@ -21,12 +24,22 @@ public class PlayerMovement : MonoBehaviour
     public List<Key.KeyColor> keys = new List<Key.KeyColor>();
 
     private bool isInvulnerable;
+    private bool isSpeeding;
+
+    public GameObject spriteFader;
+    private float lastTrailTime, trailPeriod;
 
 
     private void Start()
     {
+        lastTrailTime = Time.time;
+        trailPeriod = 0.1f;
+
+        spriteRend = gameObject.GetComponent<SpriteRenderer>();
+
         hasTorch = false;
         isInvulnerable = false;
+        isSpeeding = false;
         currentHealth = maxHealth;
         HealthBar.instance.SetupHealth((int)currentHealth);
         if (lanternObj == null)
@@ -55,6 +68,13 @@ public class PlayerMovement : MonoBehaviour
 
             //animator.SetBool("SpacebarStatus",spacebarStatus); //parameter does not yet exist. commenting to supress warnings
             HealthBar.instance.SetCurrentHealth(currentHealth);
+        }
+
+        if (isSpeeding && (Time.time > lastTrailTime + trailPeriod))
+        {
+            lastTrailTime = Time.time;
+            GameObject f = Instantiate(spriteFader, transform.position, Quaternion.identity);
+            f.GetComponent<SpriteRenderer>().sprite = spriteRend.sprite;
         }
     }
 
@@ -173,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("SpeedBoost"))
         {
             moveSpeed += BoostValues.instance.GetSpeedIncrease();
+            isSpeeding = true;
             Destroy(collision.gameObject);
             StartCoroutine(ResetSpeed());
         }
@@ -180,12 +201,14 @@ public class PlayerMovement : MonoBehaviour
         {
             hasTorch = true;
             Destroy(collision.gameObject);
+            torchParticles.SetActive(hasTorch);
             StartCoroutine(ResetTorch());
         }
         if (collision.CompareTag("InvulnerabilityBoost"))
         {
             isInvulnerable = true;
             Destroy(collision.gameObject);
+            invulnerableParticles.SetActive(isInvulnerable);
             StartCoroutine(ResetInvulnerability());
         }
     }
@@ -195,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(BoostValues.instance.GetSpeedIncreaseDuration());
         moveSpeed -= BoostValues.instance.GetSpeedIncrease();
+        isSpeeding = false;
     }
 
     public bool GetTorchStatus()
@@ -205,7 +229,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator ResetTorch()
     {
         yield return new WaitForSeconds(BoostValues.instance.GetTorchDuration());
-        hasTorch = false;    
+        hasTorch = false;
+        torchParticles.SetActive(hasTorch);
     }
 
 
@@ -218,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(BoostValues.instance.GetInvulnerabilityDuration());
         isInvulnerable = false;
+        invulnerableParticles.SetActive(isInvulnerable);
     }
 
     public void addKey(Key.KeyColor key)
