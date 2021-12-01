@@ -9898,4 +9898,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuel: 2000
-  fuelConsumptionRate: 100
+  baseFuelConsumptionRate: 100
