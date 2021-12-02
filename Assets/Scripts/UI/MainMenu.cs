@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject HighscoreTable;
     public void PlayGame() 
     {
         PlayerPrefs.SetString("difficulty", GameObject.Find("DifficultyButton").GetComponent<DifficultyButton>().getDifficulty().ToString());
@@ -13,5 +14,15 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         UnityEditor.EditorApplication.isPlaying = false;
+    }
+    public void ShowHighscores() 
+    {
+        gameObject.SetActive(false);
+        HighscoreTable.SetActive(true);
+    }
+    public void Back()
+    {
+        HighscoreTable.SetActive(false);
+        gameObject.SetActive(true);
     }
 }
