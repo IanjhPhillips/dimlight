@@ -63,4 +63,9 @@ public class SoundManager : MonoBehaviour
             oldIndex = index;
         }
     }
+
+    public void setGameOver()
+    {
+        isGameOver = SceneInfo.info.type == SceneInfo.SceneType.Recap;
+    }
 }
