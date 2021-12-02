@@ -37,28 +37,7 @@ public class SoundFX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Test Sounds
-        // if(Input.GetKeyDown(KeyCode.G))
-        // {
-        //     PlayTrack(sounds.door_locked);
-        // }
-        // else if(Input.GetKeyDown(KeyCode.H))
-        // {
-        //     PlayTrack(sounds.door_unlocked);
-        // }
-        // else if(Input.GetKeyDown(KeyCode.I))
-        // {
-        //     PlayTrack(sounds.keys);
-        // }
-        // else if(Input.GetKeyDown(KeyCode.J))
-        // {
-        //     PlayTrack(sounds.level_1_hit);
-        // }
-        // else if(Input.GetKeyDown(KeyCode.K))
-        // {
-        //     PlayTrack(sounds.level_2_hit);
-        // }
-        
+       
     }
 
     public void PlayTrack(sounds sound)
