@@ -38,6 +38,7 @@ public class Door : MonoBehaviour
             {
                 isDoorOpen = true;
                 SetDoor(doorColor, isDoorOpen);
+                player.removeKey(doorColor);
             }
         }
     }
