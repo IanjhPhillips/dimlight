@@ -17,6 +17,7 @@ TagManager:
   - InvulnerabilityBoost
   - Stairs
   - Candle
+  - HighscoreTable
   layers:
   - Default
   - TransparentFX
