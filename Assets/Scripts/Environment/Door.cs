@@ -36,9 +36,15 @@ public class Door : MonoBehaviour
             PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
             if (player.keys.Contains(doorColor))
             {
+                SoundFX.soundFX.PlayTrack(SoundFX.sounds.door_unlocked);
                 isDoorOpen = true;
                 SetDoor(doorColor, isDoorOpen);
                 player.removeKey(doorColor);
+            }
+            else
+            {
+                SoundFX.soundFX.PlayTrack(SoundFX.sounds.door_locked);
+
             }
         }
     }

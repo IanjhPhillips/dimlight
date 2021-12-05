@@ -164,6 +164,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("Stairs"))
         {
+            SoundFX.sounds sound = SoundManager.soundManager.currentIndex == 0 ? SoundFX.sounds.level_1_hit : SoundFX.sounds.level_2_hit;
+            SoundFX.soundFX.PlayTrack(sound);
             collision.gameObject.GetComponent<Stairs>().LoadNext();
         }
 
@@ -178,6 +180,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Key key = collision.gameObject.GetComponent<Key>();
             key.AddKeyToPlayer(this);
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.keys);
         }
 
         if (collision.CompareTag("FuelBoost"))
