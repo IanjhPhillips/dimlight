@@ -132,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isInvulnerable) 
         {
             currentHealth -= d;
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.damage);
         }
         if (currentHealth <= 0)
         {
@@ -191,11 +192,13 @@ public class PlayerMovement : MonoBehaviour
         {
             lantern.setCurrentFuel(lantern.getCurrentFuel() + BoostValues.instance.GetFuelIncrease());
             Destroy(collision.gameObject);
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.crackle);
         }
         if (collision.CompareTag("HealthBoost"))
         {
             setCurrentHealth(currentHealth + BoostValues.instance.GetHealthIncrease());
             Destroy(collision.gameObject);
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
         }
         if (collision.CompareTag("SpeedBoost"))
         {
@@ -203,6 +206,7 @@ public class PlayerMovement : MonoBehaviour
             isSpeeding = true;
             Destroy(collision.gameObject);
             StartCoroutine(ResetSpeed());
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
         }
         if (collision.CompareTag("TorchBoost"))
         {
@@ -210,6 +214,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             torchParticles.SetActive(hasTorch);
             StartCoroutine(ResetTorch());
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.torch);
         }
         if (collision.CompareTag("InvulnerabilityBoost"))
         {
@@ -217,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             invulnerableParticles.SetActive(isInvulnerable);
             StartCoroutine(ResetInvulnerability());
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
         }
         if (collision.CompareTag("Trap"))
         {

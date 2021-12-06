@@ -18,10 +18,12 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
+                SoundManager.soundManager.isGamePaused = false;
             }
             else 
             {
                 Pause();
+                SoundManager.soundManager.isGamePaused = true;
             }
         }
     }
