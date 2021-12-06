@@ -180,8 +180,6 @@ public class PlayerMovement : MonoBehaviour
             Damage(1.0f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
-
-
         if (collision.CompareTag("Key"))
         {
             Key key = collision.gameObject.GetComponent<Key>();
@@ -219,6 +217,24 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             invulnerableParticles.SetActive(isInvulnerable);
             StartCoroutine(ResetInvulnerability());
+        }
+        if (collision.CompareTag("Trap"))
+        {
+            Trap trap = collision.gameObject.GetComponent<Trap>();
+            if (trap.isActive())
+            {
+                Damage(trap.damage);
+            }
+            trap.setHasPlayer(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Trap"))
+        {
+            Trap trap = collision.gameObject.GetComponent<Trap>();
+            trap.setHasPlayer(false);
         }
     }
 

@@ -19,6 +19,7 @@ TagManager:
   - Candle
   - HighscoreTable
   - BigGhost
+  - Trap
   layers:
   - Default
   - TransparentFX
