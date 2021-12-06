@@ -30,26 +30,31 @@ public class RecapMenu : MonoBehaviour
 
     public void LoadMenu ()
     {
-        //If score has not been set yet, set it to completion time
-        if (PlayerPrefs.GetFloat("score_" + completionDifficulty, 0f) == 0f)
+        if (GameObject.Find("NameInput").GetComponent<Text>().text == "")
         {
-            PlayerPrefs.SetFloat("score_"+completionDifficulty, completionTime);
+            completionName = "Boblin";
+        }
+        else
+        {
+            completionName = GameObject.Find("NameInput").GetComponent<Text>().text;
         }
 
-        if (completionTime <= PlayerPrefs.GetFloat("score_" + completionDifficulty))
+        if (PlayerPrefs.GetString("scores", "empty") == "empty")
         {
-            PlayerPrefs.SetFloat("score_" + completionDifficulty, completionTime);
-            if (GameObject.Find("NameInput").GetComponent<Text>().text == "")
-            {
-                completionName = "Boblin";
-            }
-            else
-            {
-                completionName = GameObject.Find("NameInput").GetComponent<Text>().text;
-            }
-            PlayerPrefs.SetString("highscore_" + completionDifficulty, completionName + " escaped on " + completionDifficulty + " in " + completionTime + " seconds.");
+            HighscoreTable.Scores scores = new HighscoreTable.Scores();
+            scores.ScoreEntries.Add(new ScoreEntry(completionTime, completionName, completionDifficulty));
+            string json = JsonUtility.ToJson(scores);
+            PlayerPrefs.SetString("scores", json);
+            PlayerPrefs.Save();
         }
-        
+        else 
+        {
+            HighscoreTable.Scores scores = JsonUtility.FromJson<HighscoreTable.Scores>(PlayerPrefs.GetString("scores"));
+            scores.ScoreEntries.Add(new ScoreEntry(completionTime, completionName, completionDifficulty));
+            string json = JsonUtility.ToJson(scores);
+            PlayerPrefs.SetString("scores", json);
+            PlayerPrefs.Save();
+        }
         GameManager.manager.LoadScene(0);
     }
 }
