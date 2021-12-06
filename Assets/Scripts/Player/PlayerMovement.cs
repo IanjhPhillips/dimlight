@@ -176,7 +176,11 @@ public class PlayerMovement : MonoBehaviour
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
 
-
+        if (collision.CompareTag("BigGhost"))
+        {
+            Damage(1.0f);
+            collision.gameObject.GetComponent<Ghost>().Respawn();
+        }
         if (collision.CompareTag("Key"))
         {
             Key key = collision.gameObject.GetComponent<Key>();
@@ -219,6 +223,24 @@ public class PlayerMovement : MonoBehaviour
             invulnerableParticles.SetActive(isInvulnerable);
             StartCoroutine(ResetInvulnerability());
             SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
+        }
+        if (collision.CompareTag("Trap"))
+        {
+            Trap trap = collision.gameObject.GetComponent<Trap>();
+            if (trap.isActive())
+            {
+                Damage(trap.damage);
+            }
+            trap.setHasPlayer(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Trap"))
+        {
+            Trap trap = collision.gameObject.GetComponent<Trap>();
+            trap.setHasPlayer(false);
         }
     }
 
