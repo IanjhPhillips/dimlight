@@ -86,4 +86,22 @@ public class GameManager : MonoBehaviour
     {
         return fail;
     }
+
+    public static int getDifficulty()
+    {
+        string difficulty = PlayerPrefs.GetString("difficulty");
+        if (difficulty == "Easy")
+        {
+            return 0;
+        }
+        else if (difficulty == "Medium")
+        {
+            return 1;
+        }
+        else if (difficulty == "Hard")
+        {
+            return 2;
+        }
+        return 1;
+    }
 }

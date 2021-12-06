@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
+    public float[] difficultyMaxLifeTimes;
+    public float[] difficultyMinLifeTimes;
+    public float[] difficultySpeeds;
+
+
     private Lantern lantern;
     private GameObject lanternObject;
 
     private SpriteRenderer spriteRend;
     private Animator animator;
 
-    public float speed;
+    private float speed;
     private float setSpeed;
     private bool active;
     private float respawnTime;
-    public float lifeTimeMin = 10f, lifeTimeMax = 30f;
+    private float lifeTimeMin, lifeTimeMax;
     public bool isBig;
 
     private bool lanternIsActive;
@@ -26,6 +31,12 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int difficulty = GameManager.getDifficulty();
+
+        lifeTimeMin = difficultyMinLifeTimes[difficulty];
+        lifeTimeMax = difficultyMaxLifeTimes[difficulty];
+        speed = difficultySpeeds[difficulty];
+
         setSpeed = speed;
 
         spriteRend = gameObject.GetComponent<SpriteRenderer>();
