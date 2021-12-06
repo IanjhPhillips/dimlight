@@ -175,6 +175,12 @@ public class PlayerMovement : MonoBehaviour
             collision.gameObject.GetComponent<Ghost>().Respawn();
         }
 
+        if (collision.CompareTag("BigGhost"))
+        {
+            Damage(1.0f);
+            collision.gameObject.GetComponent<Ghost>().Respawn();
+        }
+
 
         if (collision.CompareTag("Key"))
         {

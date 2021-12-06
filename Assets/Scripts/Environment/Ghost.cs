@@ -15,6 +15,7 @@ public class Ghost : MonoBehaviour
     private bool active;
     private float respawnTime;
     public float lifeTimeMin = 10f, lifeTimeMax = 30f;
+    public bool isBig;
 
     private bool lanternIsActive;
     private float lanternRadius;
@@ -36,7 +37,7 @@ public class Ghost : MonoBehaviour
         lanternRadius = lantern.getRadius();
         lanternIsActive = lantern.isActive();
 
-        spawnDistanceFromPlayer = Random.Range(lanternRadius + LANTERN_BUFFER_DISTANCE, lanternRadius*2);
+        spawnDistanceFromPlayer = Random.Range(10f, 20f);
         Spawn();
     }
 
@@ -95,18 +96,17 @@ public class Ghost : MonoBehaviour
         lanternRadius = lantern.getRadius();
 
         Vector2 target;
-
-        if (lanternIsActive && distanceToLantern < lanternRadius + LANTERN_BUFFER_DISTANCE)
+        if (isBig || !lanternIsActive)
+        {
+            target = lanternPosition;
+        }
+        else if (lanternIsActive && distanceToLantern < lanternRadius + LANTERN_BUFFER_DISTANCE)
         {
             target = position + lanternOffset.normalized;
         }
         else if (lanternIsActive && distanceToLantern > lanternRadius + LANTERN_BUFFER_DISTANCE)
         {
             target = GetLanternEdgeTarget();
-        }
-        else if (!lanternIsActive)
-        {
-            target = lanternPosition;
         }
         else
         {

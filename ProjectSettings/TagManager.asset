@@ -18,6 +18,7 @@ TagManager:
   - Stairs
   - Candle
   - HighscoreTable
+  - BigGhost
   layers:
   - Default
   - TransparentFX
