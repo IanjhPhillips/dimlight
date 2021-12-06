@@ -173,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Damage(0.25f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.damage);
         }
 
 
@@ -187,11 +188,13 @@ public class PlayerMovement : MonoBehaviour
         {
             lantern.setCurrentFuel(lantern.getCurrentFuel() + BoostValues.instance.GetFuelIncrease());
             Destroy(collision.gameObject);
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.crackle);
         }
         if (collision.CompareTag("HealthBoost"))
         {
             setCurrentHealth(currentHealth + BoostValues.instance.GetHealthIncrease());
             Destroy(collision.gameObject);
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
         }
         if (collision.CompareTag("SpeedBoost"))
         {
@@ -199,6 +202,7 @@ public class PlayerMovement : MonoBehaviour
             isSpeeding = true;
             Destroy(collision.gameObject);
             StartCoroutine(ResetSpeed());
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
         }
         if (collision.CompareTag("TorchBoost"))
         {
@@ -206,6 +210,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             torchParticles.SetActive(hasTorch);
             StartCoroutine(ResetTorch());
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.torch);
         }
         if (collision.CompareTag("InvulnerabilityBoost"))
         {
@@ -213,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             invulnerableParticles.SetActive(isInvulnerable);
             StartCoroutine(ResetInvulnerability());
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.potion);
         }
     }
 

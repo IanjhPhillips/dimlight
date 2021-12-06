@@ -2500,18 +2500,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5565324192006017770, guid: c526c96583d26c2479f85afe144eee68, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565324192300425371, guid: c526c96583d26c2479f85afe144eee68, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5565324192373816392, guid: c526c96583d26c2479f85afe144eee68, type: 3}
       propertyPath: m_Name
       value: SoundFX
       objectReference: {fileID: 0}
+    - target: {fileID: 5565324192373816398, guid: c526c96583d26c2479f85afe144eee68, type: 3}
+      propertyPath: torch
+      value: 
+      objectReference: {fileID: 8300000, guid: 933f1dfe1822724449cfda403b2f0f5f, type: 3}
     - target: {fileID: 5565324192373816399, guid: c526c96583d26c2479f85afe144eee68, type: 3}
       propertyPath: m_RootOrder
       value: 4
