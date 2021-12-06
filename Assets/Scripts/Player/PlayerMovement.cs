@@ -132,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isInvulnerable) 
         {
             currentHealth -= d;
+            SoundFX.soundFX.PlayTrack(SoundFX.sounds.damage);
         }
         if (currentHealth <= 0)
         {
@@ -173,7 +174,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Damage(0.25f);
             collision.gameObject.GetComponent<Ghost>().Respawn();
-            SoundFX.soundFX.PlayTrack(SoundFX.sounds.damage);
         }
 
 

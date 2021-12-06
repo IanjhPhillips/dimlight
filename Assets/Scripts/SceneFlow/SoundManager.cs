@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -9,9 +10,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource master;
     public AudioSource[] slaves;
     public int oldIndex = 0;
-    [Range(0, 1)] 
-    public int currentIndex = 0;
+    [Range(0, 2)] 
+    public int currentIndex = 1;
     public bool isGameOver = false;
+    public bool isGamePaused = false;
 
     private void Awake()
     {
@@ -44,7 +46,7 @@ public class SoundManager : MonoBehaviour
         foreach (var slave in slaves)
         {
             slave.timeSamples = master.timeSamples;
-            slave.volume = isGameOver ? 1 : 0;
+            slave.volume = isGamePaused ? 1 : 0;
         }
     }
 
@@ -54,18 +56,42 @@ public class SoundManager : MonoBehaviour
         {
             master.GetComponent<TrackSelector>().SwitchTrack(index);
             master.Play();
-            foreach (var slave in slaves)
+            if (index != 2)
             {
-                slave.GetComponent<TrackSelector>().SwitchTrack(index);
-                slave.Play();
-                slave.volume = isGameOver ? 1 : 0;
+                foreach (var slave in slaves)
+                {
+                    slave.GetComponent<TrackSelector>().SwitchTrack(index);
+                    slave.Play();
+                    slave.volume = isGamePaused ? 1 : 0;
+                }
             }
+            else
+            {
+                foreach (var slave in slaves)
+                {
+                    slave.Stop();
+                    slave.volume = 0;
+                }
+            }
+            currentIndex = index;
             oldIndex = index;
         }
     }
 
-    public void setGameOver()
+    public void setSceneMusic()
     {
         isGameOver = SceneInfo.info.type == SceneInfo.SceneType.Recap;
+        if (SceneManager.GetActiveScene().name == "Level5")
+        {
+            ChangeTrackIndex(0);
+        }
+        else if (SceneManager.GetActiveScene().name == "RecapMenu")
+        {
+            ChangeTrackIndex(2);
+        }
+        else
+        {
+            ChangeTrackIndex(1);
+        }
     }
 }

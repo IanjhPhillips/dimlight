@@ -24,6 +24,6 @@ public class SceneInfo : MonoBehaviour
 
     public void Start()
     {
-        SoundManager.soundManager.setGameOver();
+        SoundManager.soundManager.setSceneMusic();
     }
 }

@@ -2561,17 +2561,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1551777749197520056, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
-      propertyPath: m_Volume
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 1551777749378295140, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
       propertyPath: m_Name
       value: SoundManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1551777749378295141, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
-      propertyPath: isGameOver
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1551777749378295162, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
       propertyPath: m_RootOrder
@@ -2616,10 +2608,6 @@ PrefabInstance:
     - target: {fileID: 1551777749378295162, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1551777749854736731, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
-      propertyPath: m_Volume
-      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd7a637772517f48abca33aef9bca82, type: 3}
