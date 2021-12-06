@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private float[] difficultyHealth = { 8f, 6f, 4f };
+
     public float moveSpeed = 5f;
     public Rigidbody2D rigidBody;
     public Animator animator;
@@ -18,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject invulnerableParticles, torchParticles;
 
-    public float maxHealth = 10f;
+    private float maxHealth;
     private float currentHealth;
 
     public List<Key.KeyColor> keys = new List<Key.KeyColor>();
@@ -32,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        int difficulty = GameManager.getDifficulty();
+
         lastTrailTime = Time.time;
         trailPeriod = 0.1f;
 
@@ -40,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         hasTorch = false;
         isInvulnerable = false;
         isSpeeding = false;
+        maxHealth = difficultyHealth[difficulty];
         currentHealth = maxHealth;
         HealthBar.instance.SetupHealth((int)currentHealth);
         if (lanternObj == null)

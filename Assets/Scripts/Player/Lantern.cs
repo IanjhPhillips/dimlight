@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Lantern : MonoBehaviour
 {
+    private float[] difficultyFuel = { 3000f, 2000f, 1000f };
+
     PlayerMovement player;
 
     private bool active;
@@ -23,6 +25,10 @@ public class Lantern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initialize difficulty settings
+        maxFuel = difficultyFuel[GameManager.getDifficulty()];
+
+        //get dependencies
         player = transform.parent.gameObject.GetComponent<PlayerMovement>();
 
         fuelConsumptionRate = baseFuelConsumptionRate;
