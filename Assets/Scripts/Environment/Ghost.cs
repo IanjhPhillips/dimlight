@@ -117,7 +117,7 @@ public class Ghost : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Candle"))
+        if (collision.transform.CompareTag("Candle") && !isBig)
         {
             Respawn();
         }
