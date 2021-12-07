@@ -17,6 +17,7 @@ public class Ghost : MonoBehaviour
 
     private float speed;
     private float setSpeed;
+    private float speedMod = 250f;
     private bool active;
     private float respawnTime;
     private float lifeTimeMin, lifeTimeMax;
@@ -93,7 +94,7 @@ public class Ghost : MonoBehaviour
     private void Move ()
     {
         Vector2 target = GetMoveTarget();
-        transform.position = Vector2.MoveTowards(transform.position, target, speed);
+        transform.position = Vector2.MoveTowards(transform.position, target, speed*speedMod*Time.deltaTime);
         spriteRend.flipX = ((Vector2) transform.position - target).x < 0;
     }
 
